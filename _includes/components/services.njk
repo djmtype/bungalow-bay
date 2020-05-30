@@ -1,0 +1,30 @@
+
+
+
+<div class="service-area sp">
+	<div class="container">
+
+		<div class="row">
+
+			{% for service in collections.services %}
+
+			<div class="col-lg-4 col-md-6 single-service-2">
+				<div class="inner">
+					<div class="title">
+						<div class="icon">
+							
+						</div>
+						<h4>{{ service.data.title }}</h4>
+					</div>
+					<div class="content">
+						<p>{{ service.data.description }}</p>
+						
+					</div>
+				</div>
+			</div>
+
+			{% endfor %}
+			</div>
+			</div>
+			</div>
+			
