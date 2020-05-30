@@ -31,6 +31,8 @@
     "@11ty/eleventy-navigation": "^0.1.5",
     "clean-css": "^4.2.1",
     "html-minifier": "^4.0.0",
-    "uglify-es": "^3.3.9"
+    "uglify-es": "^3.3.9",
+    "@11ty/eleventy-img": "^0.2.5",
+    "eleventy-plugin-sass": "^1.0.0"
   }
 }

@@ -5,7 +5,145 @@ const htmlmin = require("html-minifier");
 const slugify = require("slugify");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 
-module.exports = function(eleventyConfig) {
+const pluginSass = require("eleventy-plugin-sass");
+const Image = require("@11ty/eleventy-img");
+
+module.exports = function(eleventyConfig) { 
+
+
+  // works also with addLiquidShortcode or addNunjucksAsyncShortcode
+	eleventyConfig.addNunjucksAsyncShortcode("jpgImage", async function (
+		src,
+		alt,
+		className
+	) {
+		let stats = await Image(src, {
+			// Array of widths
+			// Optional: use falsy value to fall back to native image size
+			widths: [768, 992, null],
+
+			// Pass any format supported by sharp
+			formats: ["webp", "jpg"], //"png"
+
+			// the directory in the image URLs <img src="/img/MY_IMAGE.png">
+			urlPath: "/img/",
+
+			// the path to the directory on the file system to write the image files to disk
+			outputDir: "_site/img/",
+
+			// eleventy-cache-assets
+			// If a remote image URL, this is the amount of time before it downloads a new fresh copy from the remote server
+			//  cacheDuration: "1d"
+		});
+
+		let lowestSrc = stats.jpg[0];
+		let sizes = "100vw"; // Make sure you customize this!
+
+		if (alt === undefined) {
+			// You bet we throw an error on missing alt (alt="" works okay)
+			throw new Error(`Missing \`alt\` on jpgImage from: ${src}`);
+		}
+
+		if (className !== undefined) {
+			classHolder = ' class="' + className + '"';
+		} else {
+			classHolder = "";
+		}
+
+		// Iterate over formats and widths
+		return (
+			`
+			<picture>
+      ${Object.values(stats)
+				.map((imageFormat) => {
+					return `  <source type="image/${
+						imageFormat[0].format
+						}" srcset="${imageFormat
+							.map((entry) => `${entry.url} ${entry.width}w`)
+							.join(", ")}" sizes="${sizes}">`;
+				})
+				.join("\n")}
+
+<img` +
+			classHolder +
+			` src="${lowestSrc.url}" width="${lowestSrc.width}" height="${lowestSrc.height}" alt="${alt}" loading="lazy" />
+			</picture>
+`
+		);
+	});
+
+
+
+	eleventyConfig.addNunjucksAsyncShortcode("pngImage", async function (
+		src,
+		alt,
+		className
+	) {
+		let stats = await Image(src, {
+			// Array of widths
+			// Optional: use falsy value to fall back to native image size
+			widths: [768, 992, null],
+
+			// Pass any format supported by sharp
+			formats: ["webp", "png"], //"png"
+
+			// the directory in the image URLs <img src="/img/MY_IMAGE.png">
+			urlPath: "/img/",
+
+			// the path to the directory on the file system to write the image files to disk
+			outputDir: "_site/img/",
+
+			// eleventy-cache-assets
+			// If a remote image URL, this is the amount of time before it downloads a new fresh copy from the remote server
+			//  cacheDuration: "1d"
+		});
+
+		let lowestSrc = stats.png[0];
+		let sizes = "100vw"; // Make sure you customize this!
+
+		if (alt === undefined) {
+			// You bet we throw an error on missing alt (alt="" works okay)
+			throw new Error(`Missing \`alt\` on jpgImage from: ${src}`);
+		}
+
+		if (className !== undefined) {
+			classHolder = ' class="' + className + '"';
+		} else {
+			classHolder = "";
+		}
+
+		// Iterate over formats and widths
+		return (
+			`<picture>
+      ${Object.values(stats)
+				.map((imageFormat) => {
+					return `  <source type="image/${
+						imageFormat[0].format
+						}" srcset="${imageFormat
+							.map((entry) => `${entry.url} ${entry.width}w`)
+							.join(", ")}" sizes="${sizes}">`;
+				})
+				.join("\n")}
+
+<img` +
+			classHolder +
+			` src="${lowestSrc.url}" width="${lowestSrc.width}" height="${lowestSrc.height}" alt="${alt}" loading="lazy" />
+			</picture>
+`
+		);
+	});
+
+
+
+
+	let sassPluginOptions = {
+		watch: ["**/*.{scss,sass}", "!node_modules/**"],
+		sourcemaps: true,
+	};
+
+	eleventyConfig.addPlugin(pluginSass, sassPluginOptions);
+
+
 
   // Eleventy Navigation https://www.11ty.dev/docs/plugins/navigation/
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
@@ -31,9 +169,9 @@ module.exports = function(eleventyConfig) {
   });
 
   // Minify CSS
-  eleventyConfig.addFilter("cssmin", function(code) {
-    return new CleanCSS({}).minify(code).styles;
-  });
+  // eleventyConfig.addFilter("cssmin", function(code) {
+  //   return new CleanCSS({}).minify(code).styles;
+  // });
 
   // Minify JS
   eleventyConfig.addFilter("jsmin", function(code) {
