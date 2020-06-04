@@ -7,4 +7,4 @@ class: "primary"
 content: "We have it all, plus more, much more"
 permalink: service3.json
 ---
-Site plan content
+We have it **all**, plus *more*, much more
