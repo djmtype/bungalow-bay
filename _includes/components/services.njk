@@ -18,7 +18,7 @@
 					</div>
 					<div class="content">
 						<p>{{ service.data.description }}</p>
-						{{ service.layoutContent }}
+						<p>{{ service.data.content | safe }}</p>
 					</div>
 				</div>
 			</div>
