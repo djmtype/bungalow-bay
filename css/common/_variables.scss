@@ -1,0 +1,100 @@
+// =breakpoints
+$bp-xs : 36rem; // 576
+$bp-sm : 48rem; // 768
+$bp-md : 62rem; // 992
+$bp-lg: 75rem; // 1200
+$bp-xl: 90rem; // 1440
+$bp-xxl: 100rem; // 1600
+$breakpoints: ("xs" : $bp-xs, // 576
+	"sm" : $bp-sm, // 768
+	"md" : $bp-md, // 992
+	"lg": $bp-lg, // 1200
+	"xl": $bp-xl, // 1440,
+	"xxl": $bp-xxl // 1600
+) !default;
+
+:root {
+// Sass mixins with CSS variables
+// Based on Cody Framework: https://codyhouse.co/ds/docs/framework/colors
+	
+	// white to dark
+	@include defineColorHSL(--color-lite, 0, 0%, 100%);
+	@include defineColorHSL(--color-smoke, 0, 0%, 95%);
+	@include defineColorHSL(--color-mute-lite, 0, 0%, 70%);
+	@include defineColorHSL(--color-mute, 0, 0%, 40%);
+	@include defineColorHSL(--color-dark, 0, 0%, 0%);
+	
+
+
+@include defineColorHSL(--color-primary, 210, 56%, 37%);
+@include defineColorHSL(--color-secondary, 195, 64%, 58%);
+
+@include defineColorHSL(--color-accent, 10, 75%, 61%);
+
+
+@include defineColorHSL(--color-text, 0, 0%, 20%);
+
+@include defineColorHSL(--color-focus, 51, 100%, 50%);
+
+
+	--focus-ring: 0 0 .5rem 0 var(--color-focus);
+}
+
+:root {
+	/* fonts */
+	--font-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, Helvetica, Arial, sans-serif;
+	--font-display: "Red Hat Display", var(--font-base);
+	--font-sans: "Red Hat Text", var(--font-base);
+
+	--font-cursive: Blacksword, cursive;
+}
+
+:root {
+	/* Type Scale */
+	--ratio: 1.333;
+	--line-height: 1.5;
+	--line-height-md: 1.3;
+	--line-height-sm: 1.15;
+	--s0: 1.0rem;
+	--s1: calc(var(--s0) * var(--ratio));
+	--s2: calc(var(--s1) * var(--ratio));
+	--s3: calc(var(--s2) * var(--ratio));
+	--s4: calc(var(--s3) * var(--ratio));
+	--s5: calc(var(--s4) * var(--ratio));
+	--s6: calc(var(--s5) * var(--ratio));
+	--s7: calc(var(--s6) * var(--ratio));
+	--s-1: calc(var(--s0) / var(--ratio));
+	--s-2: calc(var(--s-1) / var(--ratio));
+	--s-3: calc(var(--s-2) / var(--ratio));
+	--s-4: calc(var(--s-3) / var(--ratio));
+	--s-5: calc(var(--s-4) / var(--ratio));
+	--s-6: calc(var(--s-5) / var(--ratio));
+}
+
+:root {
+	/* Spacing */
+	--flow-xs: calc(var(--s0) / 1.5);
+	--flow-sm: var(--s0);
+	--flow: calc(var(--s0) * 1.5);
+	--flow-md: calc(var(--s0) * 3);
+	--flow-lg: calc(var(--s0) * 4);
+	--flow-xl: calc(var(--s0) * 5);
+	--gap: calc(var(--s0) * 1.5);
+
+	@media (min-width: #{$bp-sm}) {
+		--gap: calc(var(--s0) * 2);
+	}
+}
+
+:root {
+	/* Misc */
+	--border-line: 1px;
+
+	@media (min-width: $bp-xxl) {
+		--border-line: 1px;
+	}
+
+	--radius-rounded: .25em;
+	--radius-pill: 999em;
+	--radius-circle: 50%;
+}

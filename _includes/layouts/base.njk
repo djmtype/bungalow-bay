@@ -3,13 +3,16 @@
 
 	{% include "components/head.njk" %}
 
-	<body>
+	<body class="no-js">
 
-		<header>
-			<em>
-				<a href="{{ '/' | url }}">{{ metadata.title }}</a>
-			</em>
-			{% include "components/nav.njk" %}
+		<header class="site-header">
+			
+				<div class="container max-bp-lg">
+					<a class="site-brand" href="{{ '/' | url }}"><img src="static/img/logo-bungalow-bay.png" alt=""><span class="sr-only">{{ metadata.title }}</span></a>
+				</div>
+				<!-- /.container -->
+			
+			{# {% include "components/nav.njk" %} #}
 		</header>
 
 		<main>

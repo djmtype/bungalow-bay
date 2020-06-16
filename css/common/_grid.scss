@@ -1,0 +1,393 @@
+.container {
+  width: 100%;
+  padding-right: var(--gap);
+  padding-left: var(--gap);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+// ⚡️ Flash Grid
+$grid-columns: 12 !default;
+
+
+
+
+.grid,
+[class*="grid-auto-"] {
+	--grid-gap: var(--gap);
+	display: grid;
+	width: 100%;
+	grid-gap: var(--grid-gap, 0);
+	// grid-column-gap: var(--gap);
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.grid {
+	--grid-cols: #{$grid-columns};
+	grid-template-columns: repeat(var(--grid-cols), 1fr);
+
+	>* {
+		grid-column-end: span var(--grid-cols);
+	}
+}
+
+.grid-auto-xs,
+.grid-auto-sm,
+.grid-auto-md,
+.grid-auto-lg,
+.grid-auto-xl {
+	// auto-sized grid
+	grid-template-columns: repeat(auto-fit, minmax(var(--col-min-width), 1fr));
+}
+
+.grid-auto-xs {
+	--col-min-width: 8rem;
+}
+
+.grid-auto-sm {
+	--col-min-width: 10rem;
+}
+
+.grid-auto-md {
+	--col-min-width: 15rem;
+}
+
+.grid-auto-lg {
+	--col-min-width: 20rem;
+}
+
+.grid-auto-xl {
+	--col-min-width: 25rem;
+}
+
+.grid-auto-cols {
+	// cols = same size
+	grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+}
+
+.grid-gap-xxxxs {
+	--grid-gap: var(--space-xxxxs, 0.125rem);
+}
+
+.grid-gap-xxxs {
+	--grid-gap: var(--space-xxxs, 0.25rem);
+}
+
+.grid-gap-xxs {
+	--grid-gap: var(--space-xxs, 0.375rem);
+}
+
+.grid-gap-xs {
+	--grid-gap: var(--space-xs, 0.5rem);
+}
+
+.grid-gap-sm {
+	--grid-gap: var(--space-sm, 0.75rem);
+}
+
+.grid-gap-md {
+	--grid-gap: var(--space-md, 1.25rem);
+}
+
+.grid-gap-lg {
+	--grid-gap: var(--space-lg, 2rem);
+}
+
+.grid-gap-xl {
+	--grid-gap: var(--space-xl, 3.25rem);
+}
+
+.grid-row-gap-xl {
+	grid-row-gap: var(--space-xl, 3.25rem);
+}
+
+.grid-gap-xxl {
+	--grid-gap: var(--space-xxl, 5.25rem);
+}
+
+.grid-gap-xxxl {
+	--grid-gap: var(--space-xxxl, 8.5rem);
+}
+
+.grid-gap-xxxxl {
+	--grid-gap: var(--space-xxxxl, 13.75rem);
+}
+
+@for $i from 1 through $grid-columns {
+	.col-#{$i} {
+		grid-column-end: span #{$i};
+	}
+
+	.col-start-#{$i} {
+		grid-column-start: #{$i};
+	}
+
+	.col-end-#{$i+1} {
+		grid-column-end: #{$i+1};
+	}
+}
+
+.col-start {
+	grid-column-start: 1;
+}
+
+.col-end {
+	grid-column-end: -1;
+}
+
+// breakpoints
+// $breakpoints: (
+//   xs: 32rem, 
+//   sm: 48rem,
+//   md: 64rem,
+//   lg: 80rem,
+//   xl: 90rem
+// ) !default;
+// See `_variables.scss` for breakpoints
+@mixin breakpoint($breakpoint) {
+	@media (min-width: map-get($map: $breakpoints, $key: $breakpoint)) {
+		@content;
+	}
+}
+
+@include breakpoint(xs) {
+	.xs\:grid-auto-xs {
+		--col-min-width: 8rem;
+	}
+
+	.xs\:grid-auto-sm {
+		--col-min-width: 10rem;
+	}
+
+	.xs\:grid-auto-md {
+		--col-min-width: 15rem;
+	}
+
+	.xs\:grid-auto-lg {
+		--col-min-width: 20rem;
+	}
+
+	.xs\:grid-auto-xl {
+		--col-min-width: 25rem;
+	}
+
+	.xs\:grid-auto-cols {
+		grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+	}
+
+	@for $i from 1 through $grid-columns {
+		.xs\:col-#{$i} {
+			grid-column-end: span #{$i};
+		}
+
+		.xs\:col-start-#{$i} {
+			grid-column-start: #{$i};
+		}
+
+		.xs\:col-end-#{$i+1} {
+			grid-column-end: #{$i+1};
+		}
+	}
+
+	.xs\:col-start-auto {
+		grid-column-start: auto;
+	}
+
+	.xs\:col-end-auto {
+		grid-column-end: auto;
+	}
+}
+
+@include breakpoint(sm) {
+	.sm\:grid-auto-xs {
+		--col-min-width: 8rem;
+	}
+
+	.sm\:grid-auto-sm {
+		--col-min-width: 10rem;
+	}
+
+	.sm\:grid-auto-md {
+		--col-min-width: 15rem;
+	}
+
+	.sm\:grid-auto-lg {
+		--col-min-width: 20rem;
+	}
+
+	.sm\:grid-auto-xl {
+		--col-min-width: 25rem;
+	}
+
+	.sm\:grid-auto-cols {
+		grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+	}
+
+	@for $i from 1 through $grid-columns {
+		.sm\:col-#{$i} {
+			grid-column-end: span #{$i};
+		}
+
+		.sm\:col-start-#{$i} {
+			grid-column-start: #{$i};
+		}
+
+		.sm\:col-end-#{$i+1} {
+			grid-column-end: #{$i+1};
+		}
+	}
+
+	.sm\:col-start-auto {
+		grid-column-start: auto;
+	}
+
+	.sm\:col-end-auto {
+		grid-column-end: auto;
+	}
+}
+
+@include breakpoint(md) {
+	.md\:grid-auto-xs {
+		--col-min-width: 8rem;
+	}
+
+	.md\:grid-auto-sm {
+		--col-min-width: 10rem;
+	}
+
+	.md\:grid-auto-md {
+		--col-min-width: 15rem;
+	}
+
+	.md\:grid-auto-lg {
+		--col-min-width: 20rem;
+	}
+
+	.md\:grid-auto-xl {
+		--col-min-width: 25rem;
+	}
+
+	.md\:grid-auto-cols {
+		grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+	}
+
+	@for $i from 1 through $grid-columns {
+		.md\:col-#{$i} {
+			grid-column-end: span #{$i};
+		}
+
+		.md\:col-start-#{$i} {
+			grid-column-start: #{$i};
+		}
+
+		.md\:col-end-#{$i+1} {
+			grid-column-end: #{$i+1};
+		}
+	}
+
+	.md\:col-start-auto {
+		grid-column-start: auto;
+	}
+
+	.md\:col-end-auto {
+		grid-column-end: auto;
+	}
+}
+
+@include breakpoint(lg) {
+	.lg\:grid-auto-xs {
+		--col-min-width: 8rem;
+	}
+
+	.lg\:grid-auto-sm {
+		--col-min-width: 10rem;
+	}
+
+	.lg\:grid-auto-md {
+		--col-min-width: 15rem;
+	}
+
+	.lg\:grid-auto-lg {
+		--col-min-width: 20rem;
+	}
+
+	.lg\:grid-auto-xl {
+		--col-min-width: 25rem;
+	}
+
+	.lg\:grid-auto-cols {
+		grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+	}
+
+	@for $i from 1 through $grid-columns {
+		.lg\:col-#{$i} {
+			grid-column-end: span #{$i};
+		}
+
+		.lg\:col-start-#{$i} {
+			grid-column-start: #{$i};
+		}
+
+		.lg\:col-end-#{$i+1} {
+			grid-column-end: #{$i+1};
+		}
+	}
+
+	.lg\:col-start-auto {
+		grid-column-start: auto;
+	}
+
+	.lg\:col-end-auto {
+		grid-column-end: auto;
+	}
+}
+
+@include breakpoint(xl) {
+	.xl\:grid-auto-xs {
+		--col-min-width: 8rem;
+	}
+
+	.xl\:grid-auto-sm {
+		--col-min-width: 10rem;
+	}
+
+	.xl\:grid-auto-md {
+		--col-min-width: 15rem;
+	}
+
+	.xl\:grid-auto-lg {
+		--col-min-width: 20rem;
+	}
+
+	.xl\:grid-auto-xl {
+		--col-min-width: 25rem;
+	}
+
+	.xl\:grid-auto-cols {
+		grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+	}
+
+	@for $i from 1 through $grid-columns {
+		.xl\:col-#{$i} {
+			grid-column-end: span #{$i};
+		}
+
+		.xl\:col-start-#{$i} {
+			grid-column-start: #{$i};
+		}
+
+		.xl\:col-end-#{$i+1} {
+			grid-column-end: #{$i+1};
+		}
+	}
+
+	.xl\:col-start-auto {
+		grid-column-start: auto;
+	}
+
+	.xl\:col-end-auto {
+		grid-column-end: auto;
+	}
+}

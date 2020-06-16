@@ -1,0 +1,35 @@
+.embed {
+  height: 0;
+  width: 100%;
+  position: relative;
+}
+
+.embed > * {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+.embed {
+> img {
+	object-fit: cover;
+}
+}
+
+.embed-wide {
+  padding-top: calc(9 / 16 * 100%);
+
+}
+
+.embed-sq {
+  padding-top: calc(1 / 1 * 100%);
+
+}
+
+.embed-rect {
+  padding-top: calc(4 / 6 * 100%);
+
+}
+

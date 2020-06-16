@@ -1,0 +1,32 @@
+// =accessibility
+.sr-only {
+	border: 0;
+  clip: rect(0 0 0 0);
+  height: auto;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+
+.skip-link {
+	@extend .sr-only;
+}
+
+.skip-link:focus {
+	position: absolute;
+	clip: auto !important;
+	-webkit-clip-path: none;
+	clip-path: none;
+	display: block;
+	width: 100%;
+	height: auto;
+	left: 0;
+	top: 0;
+	z-index: 102;
+//	@extend .btn;
+	// @include button($white, $secondary, $shape:none);
+}
+
