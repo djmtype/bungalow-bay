@@ -1,30 +1,20 @@
+<section class="section-cta">
+	<div class="container grid-auto-lg max-bp-lg">
 
+		{% for service in collections.services %}
 
+			<div class="card card-body text-center flow-y">
 
-<div class="service-area sp">
-	<div class="container">
+				<h3 class="text-{{ service.data.class }}">{{ service.data.title }}</h3>
+<img src="{{ service.data.icon }}" />
+				{{ service.templateContent | safe }}
+				
 
-		<div class="row">
-
-			{% for service in collections.services %}
-
-			<div class="col-lg-4 col-md-6 single-service-2">
-				<div class="inner">
-					<div class="title">
-						<div class="icon">
-							
-						</div>
-						<h4>{{ service.data.title }}</h4>
-					</div>
-					<div class="content">
-						<p>{{ service.data.description }}</p>
-						{{ service.templateContent | safe }}
-					</div>
-				</div>
+				<a class="link-block btn btn-{{ service.data.class }}" href="{{ service.data.cta_link }}">Download</a>
 			</div>
 
-			{% endfor %}
-			</div>
-			</div>
-			</div>
-			
+		{% endfor %}
+	</div>
+
+	<img class="bk-img" src="../static/img/bk-ocean.jpg" alt="" />
+</section>

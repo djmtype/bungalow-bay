@@ -1,0 +1,37 @@
+.btn {
+	border-radius: var(--radius-rounded);
+	display: inline-block;
+	vertical-align: middle;
+	padding: .5em 2.0em;
+	//  align-items: center;
+  // justify-content: center;
+  // align-self: start;
+	text-decoration: none;
+	cursor: pointer;
+	text-align: center;
+	transition: background 200ms ease-in-out,
+		transform 200ms ease, color 200ms ease, border 200ms ease;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	border: var(--border-line) solid transparent;
+	font-family: var(--font-sans);
+	font-weight: 700;
+	letter-spacing: .04em;
+	text-transform: uppercase;
+
+}
+
+
+
+
+.btn-primary {
+	@include button-solid(var(--color-primary), darker(var(--color-primary),.8), alpha(var(--color-primary),.2));
+}
+
+.btn-secondary {
+	@include button-solid(var(--color-secondary), darker(var(--color-secondary),.8), alpha(var(--color-secondary),.2));
+}
+
+.btn-accent {
+	@include button-solid(var(--color-accent), darker(var(--color-accent),.8), alpha(var(--color-accent),.2));
+}

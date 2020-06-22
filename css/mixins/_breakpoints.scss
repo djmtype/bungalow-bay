@@ -1,0 +1,64 @@
+// =breakpoint mixin
+$default-breakpoint: root;
+$current-breakpoint: $default-breakpoint;
+$placeholders: ();
+
+// breakpoint min-width mixin
+@mixin bp-min($breakpoint) {
+	$value: map-get($breakpoints, $breakpoint);
+
+	@if $value !=null {
+		$current-breakpoint: $breakpoint !global;
+
+		@media (min-width: $value) {
+			@content;
+		}
+
+		$current-breakpoint: $default-breakpoint !global;
+	}
+
+	@else {
+		@warn "Invalid breakpoint `#{$breakpoint}`.";
+	}
+}
+
+// breakpoint max-width mixin
+@mixin bp-max($breakpoint) {
+	$value: map-get($breakpoints, $breakpoint);
+
+	@if $value !=null {
+		$current-breakpoint: $breakpoint !global;
+
+		@media (max-width: $value - .1) {
+			@content;
+		}
+
+		$current-breakpoint: $default-breakpoint !global;
+	}
+
+	@else {
+		@warn "Invalid breakpoint `#{$breakpoint}`.";
+	}
+}
+
+// breakpoint min-width and max-width mixin
+@mixin bp-min-max($lower, $upper) {
+	@if map-has-key($breakpoints, $lower) and map-has-key($breakpoints, $upper) {
+		$lower-breakpoint: map-get($breakpoints, $lower);
+		$upper-breakpoint: map-get($breakpoints, $upper);
+
+		@media (min-width: $lower-breakpoint) and (max-width: ($upper-breakpoint - 1)) {
+			@content;
+		}
+	}
+
+	@else {
+		@if (map-has-key($breakpoints, $lower)==false) {
+			@warn 'Your lower breakpoint was invalid: #{$lower}.';
+		}
+
+		@if (map-has-key($breakpoints, $upper)==false) {
+			@warn 'Your upper breakpoint was invalid: #{$upper}.';
+		}
+	}
+}

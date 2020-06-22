@@ -97,4 +97,6 @@ $breakpoints: ("xs" : $bp-xs, // 576
 	--radius-rounded: .25em;
 	--radius-pill: 999em;
 	--radius-circle: 50%;
+
+	--shadow-md: 0 0 .5rem 0 alpha(var(--color-dark), .2);
 }

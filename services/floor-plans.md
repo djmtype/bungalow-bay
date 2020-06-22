@@ -1,10 +1,9 @@
 ---
 title: "Floor Plans"
-description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-cta-link: "https://google.com"
-cta-text: "Download"
+cta_link: "https://google.com"
+cta_text: "Download"
 class: "primary"
-content: "We have it all, plus more, much more"
+icon: "static/img/icon-floor-plan.svg"
 permalink: service2.json
 ---
-We have it **all**, plus *more*, much more
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.

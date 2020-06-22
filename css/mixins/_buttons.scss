@@ -1,0 +1,42 @@
+@mixin button-solid($color1, $color2, $color2lite, $shape:rounded) {
+	background-color: $color1;
+	color: var(--color-lite);
+	border-color: $color1;
+
+	@if $shape == "rounded" {
+		border-radius: var(--radius-rounded);
+	} 
+
+	@else if $shape == "none" {
+		border-radius: none;
+	}
+
+
+	&:visited {
+		background-color: $color1;
+		color: var(--color-lite);
+		border-color: $color1;
+		
+	}
+
+	&:hover,
+	&:focus {
+		background-color: $color2;
+		border-color: $color2;
+		color: var(--color-lite);
+	}
+
+	&:focus {
+		outline: none;
+		box-shadow: 0 0 0 .25em $color2lite;
+	}
+
+
+
+	&:active {
+		background-color: $color2;
+		border-color: $color2;
+	}
+
+
+}

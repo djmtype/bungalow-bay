@@ -1,10 +1,9 @@
 ---
 title: "Site Plan"
-description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-cta-link: "https://google.com"
-cta-text: "Download"
-class: "primary" 
-content: "We have it all, plus more, much more"
+cta_link: "https://google.com"
+cta_text: "Download"
+class: "secondary" 
+icon: "static/img/icon-site-plan.svg"
 permalink: service3.json
 ---
-We have it **all**, plus *more*, much more
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.

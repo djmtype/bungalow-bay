@@ -2,7 +2,7 @@
 layout: layouts/base.njk
 section: home
 ---
-<div class="hero">
+<section class="hero">
 <div class="hero-header container max-bp-lg">
 <h1 class="hero-title">
 <span class="hero-title-lead">Finally…</span>
@@ -12,8 +12,36 @@ section: home
 <!-- /.hero-header -->
 
 	<img class="hero-img" src="static/img/hero-img.jpg" width="1440" height="860" alt="" />
-</div>
+
+</section>
 <!-- /.hero -->
+
+<section class="section-intro flow-md-y">
+
+<div class="container max-bp-md text-center">
+	<h2>Bungalow Bay Beckons&hellip;</h2>
+</div>
+<!-- /.container -->
+<div class="container max-bp-lg grid">
+<div class="sm:col-5">
+
+<p>Tucked away, on a quiet cul-de-sac in the heart of Garden City Beach, SC, are the quaint cottages of Bungalow Bay. Just minutes from the ocean, these raised 3-bedroom, 2-bathroom single-family homes elicit the relaxed calm of life at the beach with easy access to all the attractions the Grand Strand area has to offer. </p>
+</div>
+
+<div class="sm:col-1">
+
+</div>
+<!-- /.col-6 -->
+<div class="sm:col-6">
+<img src="../static/img/poster-video.jpg" alt="Video poster" width="1080" height="610" />
+</div>
+<!-- /.col-6 -->
+</div>
+<!-- /.container -->
+</section>
+<!-- /.intro -->
+
+{% include "components/services.njk" %}
 
 
 		{{ layoutContent | safe }}
