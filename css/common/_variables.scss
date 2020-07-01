@@ -26,8 +26,8 @@ $breakpoints: ("xs" : $bp-xs, // 576
 	
 
 
-@include defineColorHSL(--color-primary, 210, 56%, 37%);
-@include defineColorHSL(--color-secondary, 195, 64%, 58%);
+@include defineColorHSL(--color-primary, 210, 76%, 29%);
+@include defineColorHSL(--color-secondary, 192, 100%, 41%);
 
 @include defineColorHSL(--color-accent, 10, 75%, 61%);
 
@@ -98,5 +98,6 @@ $breakpoints: ("xs" : $bp-xs, // 576
 	--radius-pill: 999em;
 	--radius-circle: 50%;
 
-	--shadow-md: 0 0 .5rem 0 alpha(var(--color-dark), .2);
+	--shadow-md: 0 0 .5rem 0;
+	--shadow-lg: 0 0 1rem 0;
 }

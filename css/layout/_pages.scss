@@ -12,6 +12,7 @@
 .site-brand {
 	width: 50%;
 	display: inline-block;
+	max-width: rem(350px);
 }
 
 .hero {
@@ -51,8 +52,8 @@
 	@extend .text-primary;
 	display: block;
 	font-size: var(--s4);
-	font-size: clamp(var(--s2), 4vw, var(--s4));
-	transform: translate(6%,-10%)
+	font-size: clamp(var(--s2), 4vw, var(--s5));
+	transform: translate(4%,-10%)
 }
 
 .section-intro {
@@ -62,7 +63,7 @@
 		content: "";
 		width: 100%;
 		height: 2rem;
-		background-image: url(../static/img/section-divider.svg);
+		background-image: url("../static/img/section-divider.svg");
 		display: block;
 		background-position: 0 0;
 		background-repeat: repeat-x;
@@ -101,5 +102,51 @@
 	height: 100%;
 	display: block;
 	object-position: center top;
+}
+}
+
+.announcement {
+	background-color: var(--color-lite);
+	padding-top: var(--flow-lg);
+	padding-bottom: var(--flow-lg);
+	box-shadow: var(--shadow-lg) alpha(var(--color-dark), .2);
+	> * {
+	align-items: center;
+	}
+}
+
+.contact {
+	padding-top: var(--flow-lg);
+	padding-bottom: var(--flow-lg);
+	background-color: alpha(var(--color-secondary),.15);
+	background-image: url("../static/img/shells.png");
+	background-attachment: fixed;
+}
+
+#fb-sm {
+	display: block;
+	@include bp-min(lg) {
+		display: none;
+	}
+}
+
+
+#fb-lg {
+	display: none;
+	@include bp-min(lg) {
+		display: block;
+	}
+}
+
+.list-social {
+	font-family: var(--font-display);
+}
+
+.social-link {
+display: inline-flex;
+align-items: center;
+svg {
+	margin-right: .75em;
+	fill: currentColor;
 }
 }

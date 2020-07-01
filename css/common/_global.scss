@@ -2,8 +2,9 @@ html {
 	//	font-size: calc(.1vw + .1vh + 1em);
 	//	font-size: calc(.125vw + .125vh + 1.125em);
 	//	font-size: calc(.2vw + .2vh + 1em);
-	//	 @media(min-width: $bp-xxl) {
-	//	 font-size: calc(.375vw + .25vh + .75em);
+		 @media(min-width: $bp-xxl) {
+			font-size: calc(.1vw + .1vh + 1em);
+		 }
 	// 	font-size: calc(.1vw + .1vh + 1em);
 	// }
 }
@@ -55,6 +56,14 @@ h4,
 h5 {
 	font-family: var(--font-display);
 	font-weight: 500;
+}
+
+.display {
+	font-size: var(--s5);
+	line-height: var(--line-height-sm);
+	@include bp-min(sm) {
+		font-size: var(--s6);
+	}
 }
 
 h1,
