@@ -22,13 +22,14 @@
 /*	Panel - Visible */
 .fr-offcanvas--is-ready[aria-hidden="false"] {
 	transform: translateX(-100%);
+	box-shadow: var(--shadow-lg) alpha(var(--color-dark), .5);
 }
 
 .panel-offcanvas {
 	padding: var(--flow);
 	background-color: var(--color-primary);
 	color: var(--color-lite);
-	box-shadow: var(--shadow-lg) alpha(var(--color-dark), .5);
+
 	&:focus {
 		outline: none;
 		box-shadow: var(--shadow-lg) alpha(var(--color-dark), .5);
