@@ -35,3 +35,41 @@
 .btn-accent {
 	@include button-solid(var(--color-accent), darker(var(--color-accent),.8), alpha(var(--color-accent),.2));
 }
+
+
+
+.btn-info {
+	font-family: var(--font-display);
+	border-radius: var(--radius-rounded) 0 0 var(--radius-rounded);
+	text-decoration: none;
+	cursor: pointer;
+	text-align: center;
+	transition: opacity 200ms ease-in-out,
+		transform 200ms ease, color 200ms ease;
+	padding: 1.0em;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	border: var(--border-line) solid transparent;
+	position: fixed;
+	top: 70vh;
+	right: 0;
+	z-index: 10;
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--color-primary);
+	color: var(--color-lite);
+	opacity: .8;
+&:hover, &:focus {
+	opacity: 1;
+}
+	svg {
+		fill: currentColor;
+		margin-bottom: var(--flow-xs);
+	}
+}
+
+
+
+

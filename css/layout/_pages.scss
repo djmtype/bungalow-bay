@@ -6,7 +6,6 @@
 	left: 0;
 	z-index: 2;
 	padding-top: var(--gap);
-	
 }
 
 .site-brand {
@@ -41,7 +40,7 @@
 }
 
 .hero-title-lead {
-	@extend .font-cursive; 
+	@extend .font-cursive;
 	@extend .text-accent;
 	font-size: var(--s6);
 	font-size: clamp(var(--s3), 8vw, var(--s6));
@@ -53,12 +52,15 @@
 	display: block;
 	font-size: var(--s4);
 	font-size: clamp(var(--s2), 4vw, var(--s5));
-	transform: translate(4%,-10%)
+	transform: translate(4%, -10%)
 }
+
+
 
 .section-intro {
 	position: relative;
 	padding-top: var(--flow-lg);
+
 	&::before {
 		content: "";
 		width: 100%;
@@ -76,33 +78,58 @@
 	}
 }
 
+.poster {
+	color: var(--color-lite);
+	background: linear-gradient(-45deg, var(--color-primary), var(--color-secondary));
+	text-align: center;
+	
+}
+
+.poster-img {
+	opacity: .3;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+
+.poster-summary {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	p {
+		font-family: var(--font-display);
+	}
+}
+
 .section-cta {
---offset: 10vh;
+	--offset: 10vh;
 	position: relative;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	padding: calc(var(--flow-lg) * 2) 0 var(--flow-lg);
-//	background-image: url(../static/img/bk-ocean.jpg);
-//	background-attachment: fixed;
-	 min-height: 100vh;
-	 @include bp-min(sm) {
+	//	background-image: url(../static/img/bk-ocean.jpg);
+	//	background-attachment: fixed;
+	min-height: 100vh;
+
+	@include bp-min(sm) {
 		padding-top: calc(var(--flow-lg) * 3);
-	 }
-//	background-size: cover;
-.bk-img {
-	position: absolute;
-	left: 0;
-	top: 0;
-//	transform: translateY(calc(-1 * var(--offset)));
-	z-index: -1;
-	object-fit: cover;
-	width: 100%;
-	height: 100%;
-	display: block;
-	object-position: center top;
-}
+	}
+
+	//	background-size: cover;
+	.bk-img {
+		position: absolute;
+		left: 0;
+		top: 0;
+		//	transform: translateY(calc(-1 * var(--offset)));
+		z-index: -1;
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+		display: block;
+		object-position: center top;
+	}
 }
 
 .announcement {
@@ -110,29 +137,31 @@
 	padding-top: var(--flow-lg);
 	padding-bottom: var(--flow-lg);
 	box-shadow: var(--shadow-lg) alpha(var(--color-dark), .2);
-	> * {
-	align-items: center;
+
+	>* {
+		align-items: center;
 	}
 }
 
 .contact {
 	padding-top: var(--flow-lg);
 	padding-bottom: var(--flow-lg);
-	background-color: alpha(var(--color-secondary),.15);
+	background-color: alpha(var(--color-secondary), .15);
 	background-image: url("../static/img/shells.png");
 	background-attachment: fixed;
 }
 
 #fb-sm {
 	display: block;
+
 	@include bp-min(lg) {
 		display: none;
 	}
 }
 
-
 #fb-lg {
 	display: none;
+
 	@include bp-min(lg) {
 		display: block;
 	}
@@ -143,10 +172,80 @@
 }
 
 .social-link {
-display: inline-flex;
-align-items: center;
-svg {
-	margin-right: .75em;
-	fill: currentColor;
+	display: inline-flex;
+	align-items: center;
+
+	svg {
+		margin-right: .75em;
+		fill: currentColor;
+	}
 }
+
+.site-footer {
+	background-color: var(--color-primary);
+	color: var(--color-lite);
+	padding-top: var(--flow-lg);
+	padding-bottom: var(--flow-lg);
+}
+
+.site-footer {
+	position: relative;
+	&::before {
+		content: "";
+		width: 100%;
+		height: 2rem;
+		background-image: url("../static/img/section-divider-footer.svg");
+		display: block;
+		background-position: 0 0;
+		background-repeat: repeat-x;
+		// background-size: cover;
+		position: absolute;
+		top: 0;
+		left: 0;
+		transform: translateY(-50%);
+		z-index: 0;
+	}
+}
+
+.logo-beach-realty {
+	width: rem(110px);
+	height: auto;
+}
+
+.contact-company {
+	display: flex;
+	align-items: center;
+	
+
+	@include bp-max(sm) {
+		justify-content: center;
+	}
+}
+
+.contact-company>*:first-child {
+	margin-right: var(--flow);
+}
+
+.copyright {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	@include bp-max(sm) {
+		margin-top: var(--flow);
+	}
+
+	@include bp-min(sm) {
+		align-items: flex-end;
+	}
+}
+
+.copyright-notice {
+	margin-top: var(--flow);
+
+	@include bp-min(sm) {
+		justify-self: flex-end;
+		margin-bottom: 0;
+		margin-top: auto;
+	}
 }

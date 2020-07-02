@@ -16,6 +16,19 @@ section: home
 </section>
 <!-- /.hero -->
 
+
+
+
+
+
+<button class="fr-offcanvas-open js-fr-offcanvas-open btn-info" aria-controls="offcanvas-1">
+	{% include "assets/svg/icon-info.svg" %} Request Info
+</button>
+
+
+
+
+
 <section class="section-intro flow-md-y">
 
 <div class="container max-bp-md text-center">
@@ -33,7 +46,15 @@ section: home
 </div>
 <!-- /.col-6 -->
 <div class="sm:col-6">
-<img src="../static/img/poster-video.jpg" alt="Video poster" width="1080" height="610" />
+<figure class="poster embed embed-wide">
+	<img class="poster-img" src="../static/img/poster-video.jpg" alt="" width="1080" height="610" />
+<div class="poster-summary flow-xs-y">
+<p class="h3">Starting at <sup>$</sup>275,000 </p>
+<p>Minutes from the Beach</p>
+</div>
+<!-- /.poster-summary -->
+</figure>
+<!-- /.poster -->
 </div>
 <!-- /.col-6 -->
 </div>
@@ -50,7 +71,7 @@ section: home
 
 
 		<div class="flow-y">
-		<h2>Starting from $275,000</h2>
+
 		<p>Ground was recently broken to start construction on five of the 28 single-family homes of Bungalow Bay Cottages. All of the cottages are being constructed by CLK Builders, known in the Grand Strand area for quality craftsmanship and integrity since 1997. Beach Realty South is the marketing arm of this partnership with a long and strong history of real estate sales on the Grand Strand’s south end.</p>
 		<p>You’ve waited long enough. Now is the time to get in on this amazing opportunity for beach living you can afford. Contact us today!</p>
 	</div>
@@ -103,8 +124,34 @@ Bungalow Bay Cottages are presented by Beach Realty South
 </section>
 <!-- /.contact -->
 
+<section class="panel-offcanvas js-fr-offcanvas" id="offcanvas-1">
+  
+<form class="form-stack flow-y" action="" method="post">
+ <h2>Request Info</h2>
+       
+        <p class="form-control">
+            <label for="name">Name (required)</label>
+            <input type="text" name="name" id="name" value="" autocorrect="off" autocomplete="name" required />
+        </p>
+        <p class="form-control">
+            <label for="email">Email (required)</label>
+            <input type="email" name="email" id="email" autocapitalize="none" autocorrect="off" autocomplete="email" title="The domain portion of the email address is invalid (the portion after the @)." pattern="^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*(\.\w{2,})+$" required />
+        </p>
+        <p class="form-control">
+            <label for="message">Your message</label>
+            <textarea name="message" id="message" rows="10"></textarea>
+        </p>
+   
+            <button class="btn btn-secondary" type="submit" name="submit">Submit</button>    
+        
+  
+</form>
 
-		{{ layoutContent | safe }}
+	<button aria-label="Close Panel" class="btn-close fr-offcanvas-close js-fr-offcanvas-close">{% include "assets/svg/icon-close.svg" %}</button>
+</section>
+
+
+		{# {{ layoutContent | safe }} #}
 
 
 

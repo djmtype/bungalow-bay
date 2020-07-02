@@ -1,31 +1,36 @@
 <!doctype html>
-<html {% if section %} data-current="{{ section }}"{% endif %} lang="en">
+<html {% if section %} data-current="{{ section }}" {% endif %} lang="en">
 
-	{% include "components/head.njk" %}
+{% include "components/head.njk" %}
 
-	<body class="no-js">
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0" nonce="DMxoGEgx"></script>
-		<header class="site-header">
-			
-				<div class="container max-bp-lg">
-					<a class="site-brand" href="{{ '/' | url }}"><img src="static/img/logo-bungalow-bay.svg" alt=""><span class="sr-only">{{ metadata.title }}</span></a>
-				</div>
-				<!-- /.container -->
-			
-			{# {% include "components/nav.njk" %} #}
-		</header>
+<body class="no-js">
+	<div id="fb-root"></div>
+	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0" nonce="DMxoGEgx"></script>
+	<header class="site-header">
 
-		<main>
-			{{ layoutContent | safe }}
+		<div class="container max-bp-lg">
+			<a class="site-brand" href="{{ '/' | url }}"><img src="static/img/logo-bungalow-bay.svg" alt=""><span class="sr-only">{{ metadata.title }}</span></a>
+		</div>
+		<!-- /.container -->
 
-			
-		</main>
+		{# {% include "components/nav.njk" %} #}
+	</header>
+
+	<main>
+		{{ layoutContent | safe }}
+
+	</main>
+
+	{% include "components/footer.njk" %}
+
+  {% set js2 %}
+    {% include "assets/js/offcanvas.js" %}
+		{% include "assets/js/script.js" %}
+  {% endset %}
+  <script>{{ js2 | jsmin | safe }}</script>
 
 
 
-
-		{% include "components/footer.njk" %}
 
 	</body>
 

@@ -1,0 +1,66 @@
+
+/*	Panel */
+.fr-offcanvas--is-ready {
+
+	height: 100%;
+	left: 100%;
+	overflow-y: scroll;
+	width: 90%;
+	
+	position: fixed;
+	top: 0;
+	transform: translateX(0);
+
+	will-change: translateX;
+	z-index: 20;
+	transition: transform 250ms ease-out, visibility 250ms ease-out;
+	@include bp-min(sm) {
+		max-width: $bp-xs;
+	}
+}
+
+/*	Panel - Visible */
+.fr-offcanvas--is-ready[aria-hidden="false"] {
+	transform: translateX(-100%);
+}
+
+.panel-offcanvas {
+	padding: var(--flow);
+	background-color: var(--color-primary);
+	color: var(--color-lite);
+	box-shadow: var(--shadow-lg) alpha(var(--color-dark), .5);
+	&:focus {
+		outline: none;
+		box-shadow: var(--shadow-lg) alpha(var(--color-dark), .5);
+	
+	}
+	
+}
+
+.btn-close {
+	position: absolute;
+	top: var(--flow);
+	right: var(--flow);
+	cursor: pointer;
+	text-align: center;
+	transition: background 200ms ease-in-out,
+		transform 200ms ease, color 200ms ease, border 200ms ease;
+	padding: 1.0em;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	border: var(--border-line) solid transparent;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	padding: .75em;
+	border-radius: var(--radius-rounded);
+	line-height: 1;
+	background-color: var(--color-secondary);
+	color: var(--color-lite);
+	svg {
+		fill: currentColor;
+		height: rem(30px);
+		width: rem(30px);
+	
+	}
+}
