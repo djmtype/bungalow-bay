@@ -6,4 +6,4 @@ class: "secondary"
 icon: "static/img/icon-site-plan.svg"
 permalink: service3.json
 ---
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Get a better idea of room dimensions and view the elevations.
