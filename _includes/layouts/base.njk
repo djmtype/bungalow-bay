@@ -3,6 +3,11 @@
 
 {% include "components/head.njk" %}
 
+
+
+
+
+
 <body class="no-js">
 	<div id="fb-root"></div>
 	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0" nonce="DMxoGEgx"></script>
@@ -22,7 +27,10 @@
 	</main>
 
 	{% include "components/footer.njk" %}
+<script>
 
+document.body.className = document.body.className.replace( 'no-js' , 'js' );
+</script>
   {% set js2 %}
     {% include "assets/js/offcanvas.js" %}
 		{% include "assets/js/script.js" %}
