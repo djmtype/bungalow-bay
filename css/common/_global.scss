@@ -2,8 +2,8 @@ html {
 	//	font-size: calc(.1vw + .1vh + 1em);
 	//	font-size: calc(.125vw + .125vh + 1.125em);
 	//	font-size: calc(.2vw + .2vh + 1em);
-		 @media(min-width: $bp-xxl) {
-			font-size: calc(.1vw + .1vh + 1em);
+		 @media(min-width: 1600px) {
+			font-size: calc(0.1vw + 0.1vh + 1em);
 		 }
 	// 	font-size: calc(.1vw + .1vh + 1em);
 	// }
@@ -16,6 +16,7 @@ body {
 	line-height: var(--line-height);
 	display: flex;
 	flex-direction: column;
+	
 	//	@extend .flow-child-y;
 }
 

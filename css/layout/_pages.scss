@@ -9,16 +9,17 @@
 }
 
 .site-brand {
-	width: 50%;
+//	width: 50%;
 	display: inline-block;
-	max-width: rem(350px);
+//	max-width: rem(350px);
+width: min(50%, rem(350px));
 }
 
 .hero {
 	width: 100%;
 	position: relative;
-	height: 100vh;
-	max-height: 62.5vw;
+	min-height: 50vh;
+	height: 51vw;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -42,8 +43,8 @@
 .hero-title-lead {
 	@extend .font-cursive;
 	@extend .text-accent;
-	font-size: var(--s6);
-	font-size: clamp(var(--s3), 8vw, var(--s6));
+	font-size: var(--s5);
+	font-size: clamp(var(--s4),6.5vw,var(--s6));
 	display: block;
 }
 
@@ -188,6 +189,7 @@
 	color: var(--color-lite);
 	padding-top: var(--flow-lg);
 	padding-bottom: var(--flow-lg);
+	z-index: 10;
 }
 
 .site-footer {
