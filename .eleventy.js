@@ -26,10 +26,10 @@ module.exports = function(eleventyConfig) {
 			formats: ["webp", "jpg"], //"png"
 
 			// the directory in the image URLs <img src="/img/MY_IMAGE.png">
-			urlPath: "/img/",
+			urlPath: "/static/img/",
 
 			// the path to the directory on the file system to write the image files to disk
-			outputDir: "_site/img/",
+			outputDir: "_site/static/img/",
 
 			// eleventy-cache-assets
 			// If a remote image URL, this is the amount of time before it downloads a new fresh copy from the remote server

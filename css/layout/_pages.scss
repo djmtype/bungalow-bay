@@ -152,6 +152,14 @@ width: min(50%, rem(350px));
 	background-attachment: fixed;
 }
 
+.fb-page {
+	max-width: 100%;
+	@include bp-max(sm) {
+	max-width: 310px;
+}
+}
+
+
 #fb-sm {
 	display: block;
 
