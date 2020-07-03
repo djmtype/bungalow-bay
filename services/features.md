@@ -1,5 +1,5 @@
 ---
-title: "Features and Finishes"
+title: "Features & Finishes"
 cta_link: "static/img/features.pdf"
 cta_text: "Download"
 class: "accent"
