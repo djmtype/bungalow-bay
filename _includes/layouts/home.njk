@@ -54,7 +54,7 @@ section: home
 	{% jpgImage "static/img/poster-video.jpg", "Street view of Bungalow Bay Homes", "poster-img" %}
 
 <div class="poster-summary flow-xs-y">
-<p class="h3">Starting at <sup>$</sup>275,000 </p>
+<p class="h3">Starting at <sup>$</sup>299,000 </p>
 <p>Minutes from the Beach</p>
 </div>
 <!-- /.poster-summary -->
@@ -70,15 +70,21 @@ section: home
 {% include "components/services.njk" %}
 
 <section class="announcement">
-<div class="container grid-auto-lg max-bp-lg">
+<div class="container grid max-bp-lg">
 
-		<h2 class="text-center display font-cursive wght-400 text-accent">Now Available!</h2>
+<div class="sm:col-6 flow-y">
+		<h2 class="text-center h1 font-cursive wght-400 text-accent">Now Available!</h2>
 
-
-		<div class="flow-y">
 
 		<p>Ground was recently broken to start construction on five of the 28 single-family homes of Bungalow Bay Cottages. All of the cottages are being constructed by CLK Builders, known in the Grand Strand area for quality craftsmanship and integrity since 1997. Beach Realty South is the marketing arm of this partnership with a long and strong history of real estate sales on the Grand Strand’s south end.</p>
 		<p>You’ve waited long enough. Now is the time to get in on this amazing opportunity for beach living you can afford. Contact us today!</p>
+
+	</div>
+	<!-- /.sm:col-6 -->
+
+	<div class="sm:col-6">
+	{% jpgImage "static/img/bb-sign.jpg", "Bungalow Bay outdoor sign"%}
+	
 	</div>
 	<!-- /.sm:col-6 -->
 </div>

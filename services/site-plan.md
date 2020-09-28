@@ -1,6 +1,6 @@
 ---
 title: "Drawing & Elevations"
-cta_link: "static/img/drawings.pdf"
+cta_link: "static/img/elevations.pdf"
 cta_text: "Download"
 class: "secondary" 
 icon: "static/img/icon-site-plan.svg"

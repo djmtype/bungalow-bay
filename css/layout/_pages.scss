@@ -135,6 +135,31 @@ width: min(50%, rem(350px));
 	}
 }
 
+.section-cta .card:last-child {
+	grid-column: 1/-1;
+	
+	flex-direction: row;
+	flex-wrap: wrap;
+	picture, img {
+		width: 100%;
+	}
+@include bp-min(md) {
+
+	> * {
+		flex: 1 0 40%;
+		max-width: 40%;
+	}
+	> *:last-child {
+		flex: 0 1 60%;
+		max-width: 60%;
+		padding-left: var(--gap);
+	
+	}
+}
+}
+
+
+
 .announcement {
 	background-color: var(--color-lite);
 	padding-top: var(--flow-lg);
