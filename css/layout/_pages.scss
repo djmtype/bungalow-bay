@@ -148,6 +148,7 @@ width: min(50%, rem(350px));
 	> * {
 		flex: 1 0 40%;
 		max-width: 40%;
+		text-align: left;
 	}
 	> *:last-child {
 		flex: 0 1 60%;
