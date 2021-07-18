@@ -175,9 +175,13 @@ width: min(50%, rem(350px));
 .contact {
 	padding-top: var(--flow-lg);
 	padding-bottom: var(--flow-lg);
-	background-color: alpha(var(--color-secondary), .15);
-	background-image: url("../static/img/shells.png");
+	background-color: alpha(var(--color-secondary), .1);
+	
 	background-attachment: fixed;
+}
+
+.contact.visible {
+	background-image: url("../static/img/shells.png");
 }
 
 .fb-page {
