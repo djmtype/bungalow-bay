@@ -27,7 +27,7 @@ $breakpoints: ("xs" : $bp-xs, // 576
 
 
 @include defineColorHSL(--color-primary, 210, 76%, 29%);
-@include defineColorHSL(--color-secondary, 192, 100%, 41%);
+@include defineColorHSL(--color-secondary, 192, 100%, 35%);
 
 @include defineColorHSL(--color-accent, 10, 75%, 51%);
 

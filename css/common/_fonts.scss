@@ -7,7 +7,7 @@
 @font-face {
   font-family: 'Red Hat Text';
 	src: url('../static/fonts/RedHatText-Regular.woff2') format('woff2'); 
-	 font-display: swap;
+	 font-display: fallback;
 	 font-weight: normal;
 	 font-style: normal;
 }
@@ -15,7 +15,7 @@
 @font-face {
   font-family: 'Red Hat Text';
 	src: url('../static/fonts/RedHatText-Bold.woff2') format('woff2'); 
-	 font-display: swap;
+	 font-display: fallback;
 	 font-weight: bold;
 	 font-style: normal;
 }

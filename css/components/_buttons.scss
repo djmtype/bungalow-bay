@@ -60,9 +60,9 @@
 	align-items: center;
 	background-color: var(--color-primary);
 	color: var(--color-lite);
-	opacity: .8;
-&:hover, &:focus {
 	opacity: 1;
+&:hover, &:focus {
+	opacity: .9;
 }
 	svg {
 		fill: currentColor;
