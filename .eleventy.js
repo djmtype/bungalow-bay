@@ -6,132 +6,112 @@ const slugify = require("slugify");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 
 const pluginSass = require("eleventy-plugin-sass");
+
+const path = require("path");
 const Image = require("@11ty/eleventy-img");
+
+
+// =jpg
+async function jpgImageShortcode(src, alt, className, sizes = "100vw") {
+  if(alt === undefined) {
+    // You bet we throw an error on missing alt (alt="" works okay)
+    throw new Error(`Missing \`alt\` on responsiveimage from: ${src}`);
+  }
+
+	if (className !== undefined) {
+		classHolder = ' class="' + className + '"';
+	} else {
+		classHolder = "";
+	}
+
+	
+
+  let metadata = await Image(src, {
+    widths: [768, 992, 1200, null],
+    formats: ['webp', 'jpg'],
+		urlPath: "/static/img/",
+		outputDir: "_site/static/img/",
+		sharpWebpOptions: {
+			quality: 70
+		},
+		sharpJpegOptions: {
+			mozjpeg: true,
+			progressive: true,
+			quality: 80
+		},
+
+		filenameFormat: function (id, src, width, format, options) {
+			const extension = path.extname(src);
+			const name = path.basename(src, extension);
+	
+			return `${name}-${width}w.${format}`;
+		}
+  });
+
+  let lowsrc = metadata.jpeg[0];
+  let highsrc = metadata.jpeg[metadata.jpeg.length - 1];
+
+  return `<picture>
+    ${Object.values(metadata).map(imageFormat => {
+      return `  <source type="${imageFormat[0].sourceType}" srcset="${imageFormat.map(entry => entry.srcset).join(", ")}" sizes="${sizes}">`;
+    }).join("\n")}
+      <img` + classHolder +
+        ` src="${lowsrc.url}"
+        width="${highsrc.width}"
+        height="${highsrc.height}"
+        alt="${alt}"
+        loading="lazy"
+        decoding="async">
+    </picture>`;
+}
+
+
+// =png
+
+async function pngImageShortcode(src, alt, className, sizes = "100vw") {
+  if(alt === undefined) {
+    // You bet we throw an error on missing alt (alt="" works okay)
+    throw new Error(`Missing \`alt\` on responsiveimage from: ${src}`);
+  }
+
+	if (className !== undefined) {
+		classHolder = ' class="' + className + '"';
+	} else {
+		classHolder = "";
+	}
+
+  let metadata = await Image(src, {
+    widths: [768, 992, null],
+    formats: ['webp', 'png'],
+		urlPath: "/static/img/",
+		outputDir: "_site/static/img/"
+  });
+
+  let lowsrc = metadata.png[0];
+  let highsrc = metadata.png[metadata.png.length - 1];
+
+  return `<picture>
+    ${Object.values(metadata).map(imageFormat => {
+      return `  <source type="${imageFormat[0].sourceType}" srcset="${imageFormat.map(entry => entry.srcset).join(", ")}" sizes="${sizes}">`;
+    }).join("\n")}
+      <img` + classHolder +
+        ` src="${lowsrc.url}"
+        width="${highsrc.width}"
+        height="${highsrc.height}"
+        alt="${alt}"
+        loading="lazy"
+        decoding="async">
+    </picture>`;
+}
+
 
 module.exports = function(eleventyConfig) { 
 
+	eleventyConfig.addNunjucksAsyncShortcode("jpgImage", jpgImageShortcode);
 
-  // works also with addLiquidShortcode or addNunjucksAsyncShortcode
-	eleventyConfig.addNunjucksAsyncShortcode("jpgImage", async function (
-		src,
-		alt,
-		className
-	) {
-		let stats = await Image(src, {
-			// Array of widths
-			// Optional: use falsy value to fall back to native image size
-			widths: [768, 992, null],
-
-			// Pass any format supported by sharp
-			formats: ["webp", "jpg"], //"png"
-
-			// the directory in the image URLs <img src="/img/MY_IMAGE.png">
-			urlPath: "/static/img/",
-
-			// the path to the directory on the file system to write the image files to disk
-			outputDir: "_site/static/img/",
-
-			// eleventy-cache-assets
-			// If a remote image URL, this is the amount of time before it downloads a new fresh copy from the remote server
-			//  cacheDuration: "1d"
-		});
-
-		let lowestSrc = stats.jpg[0];
-		let sizes = "100vw"; // Make sure you customize this!
-
-		if (alt === undefined) {
-			// You bet we throw an error on missing alt (alt="" works okay)
-			throw new Error(`Missing \`alt\` on jpgImage from: ${src}`);
-		}
-
-		if (className !== undefined) {
-			classHolder = ' class="' + className + '"';
-		} else {
-			classHolder = "";
-		}
-
-		// Iterate over formats and widths
-		return (
-			`
-			<picture>
-      ${Object.values(stats)
-				.map((imageFormat) => {
-					return `  <source type="image/${
-						imageFormat[0].format
-						}" srcset="${imageFormat
-							.map((entry) => `${entry.url} ${entry.width}w`)
-							.join(", ")}" sizes="${sizes}">`;
-				})
-				.join("\n")}
-
-<img` +
-			classHolder +
-			` src="${lowestSrc.url}" width="${lowestSrc.width}" height="${lowestSrc.height}" alt="${alt}" loading="lazy" />
-			</picture>
-`
-		);
-	});
+	eleventyConfig.addNunjucksAsyncShortcode("pngImage", pngImageShortcode);
 
 
-
-	eleventyConfig.addNunjucksAsyncShortcode("pngImage", async function (
-		src,
-		alt,
-		className
-	) {
-		let stats = await Image(src, {
-			// Array of widths
-			// Optional: use falsy value to fall back to native image size
-			widths: [768, 992, null],
-
-			// Pass any format supported by sharp
-			formats: ["webp", "png"], //"png"
-
-			// the directory in the image URLs <img src="/img/MY_IMAGE.png">
-			urlPath: "/img/",
-
-			// the path to the directory on the file system to write the image files to disk
-			outputDir: "_site/img/",
-
-			// eleventy-cache-assets
-			// If a remote image URL, this is the amount of time before it downloads a new fresh copy from the remote server
-			//  cacheDuration: "1d"
-		});
-
-		let lowestSrc = stats.png[0];
-		let sizes = "100vw"; // Make sure you customize this!
-
-		if (alt === undefined) {
-			// You bet we throw an error on missing alt (alt="" works okay)
-			throw new Error(`Missing \`alt\` on jpgImage from: ${src}`);
-		}
-
-		if (className !== undefined) {
-			classHolder = ' class="' + className + '"';
-		} else {
-			classHolder = "";
-		}
-
-		// Iterate over formats and widths
-		return (
-			`<picture>
-      ${Object.values(stats)
-				.map((imageFormat) => {
-					return `  <source type="image/${
-						imageFormat[0].format
-						}" srcset="${imageFormat
-							.map((entry) => `${entry.url} ${entry.width}w`)
-							.join(", ")}" sizes="${sizes}">`;
-				})
-				.join("\n")}
-
-<img` +
-			classHolder +
-			` src="${lowestSrc.url}" width="${lowestSrc.width}" height="${lowestSrc.height}" alt="${alt}" loading="lazy" />
-			</picture>
-`
-		);
-	});
 
 
 
