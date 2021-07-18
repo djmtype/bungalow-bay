@@ -1,5 +1,29 @@
 @font-face {
   font-family: 'Blacksword';
-	src: url('../static/fonts/Blacksword.woff2') format('woff2'), url('../static/fonts/Blacksword.woff') format('woff'); 
+	src: url('../static/fonts/Blacksword.woff2') format('woff2'); 
 	 font-display: swap;
+}
+
+@font-face {
+  font-family: 'Red Hat Text';
+	src: url('../static/fonts/RedHatText-Regular.woff2') format('woff2'); 
+	 font-display: swap;
+	 font-weight: normal;
+	 font-style: normal;
+}
+
+@font-face {
+  font-family: 'Red Hat Text';
+	src: url('../static/fonts/RedHatText-Bold.woff2') format('woff2'); 
+	 font-display: swap;
+	 font-weight: bold;
+	 font-style: normal;
+}
+
+@font-face {
+  font-family: 'Red Hat Display';
+	src: url('../static/fonts/RedHatDisplay-Medium.woff2') format('woff2'); 
+	 font-display: swap;
+	 font-weight: 500;
+	 font-style: normal;
 }
