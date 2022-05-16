@@ -5,14 +5,17 @@ const htmlmin = require("html-minifier");
 const slugify = require("slugify");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 
-const pluginSass = require("eleventy-plugin-sass");
+// const pluginSass = require("eleventy-plugin-sass");
+
+const eleventySass = require("@grimlink/eleventy-plugin-sass");
+const sass = require("sass");
 
 const path = require("path");
 const Image = require("@11ty/eleventy-img");
 
 
 // =jpg
-async function jpgImageShortcode(src, alt, className, sizes = "100vw") {
+async function jpgImageShortcode(src, alt, className, loadingType, sizes = "100vw") {
   if(alt === undefined) {
     // You bet we throw an error on missing alt (alt="" works okay)
     throw new Error(`Missing \`alt\` on responsiveimage from: ${src}`);
@@ -22,6 +25,12 @@ async function jpgImageShortcode(src, alt, className, sizes = "100vw") {
 		classHolder = ' class="' + className + '"';
 	} else {
 		classHolder = "";
+	}
+
+  if (loadingType !== undefined) {
+		loadingHolder = loadingType;
+	} else {
+		loadingHolder = 'lazy';
 	}
 
 	
@@ -60,7 +69,7 @@ async function jpgImageShortcode(src, alt, className, sizes = "100vw") {
         width="${highsrc.width}"
         height="${highsrc.height}"
         alt="${alt}"
-        loading="lazy"
+        loading="${loadingHolder}"
         decoding="async">
     </picture>`;
 }
@@ -84,7 +93,13 @@ async function pngImageShortcode(src, alt, className, sizes = "100vw") {
     widths: [768, 992, null],
     formats: ['webp', 'png'],
 		urlPath: "/static/img/",
-		outputDir: "_site/static/img/"
+		outputDir: "_site/static/img/",
+    filenameFormat: function (id, src, width, format, options) {
+      const extension = path.extname(src);
+      const name = path.basename(src, extension);
+  
+      return `${name}-${width}w.${format}`;
+    }
   });
 
   let lowsrc = metadata.png[0];
@@ -116,14 +131,18 @@ module.exports = function(eleventyConfig) {
 
 
 
-	let sassPluginOptions = {
-		watch: ["**/*.{scss,sass}", "!node_modules/**"],
-		sourcemaps: true,
-	};
-
-	eleventyConfig.addPlugin(pluginSass, sassPluginOptions);
+	// let sassPluginOptions = {
+	// 	watch: ["**/*.{scss,sass}", "!node_modules/**"],
+	// 	sourcemaps: true,
+	// };
 
 
+
+
+
+
+
+  eleventyConfig.addPlugin(eleventySass, { sass, outputStyle: "compressed", sourceMap: false });
 
   // Eleventy Navigation https://www.11ty.dev/docs/plugins/navigation/
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
